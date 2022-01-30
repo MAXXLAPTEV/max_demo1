@@ -1,4 +1,4 @@
-package com.example.max_demo1.Car;
+package com.example.max_demo1.dto;
 
 import lombok.Data;
 

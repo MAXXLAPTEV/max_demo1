@@ -1,6 +1,8 @@
 package com.example.max_demo1.web;
 
-import com.example.max_demo1.Car.Car;
+import com.example.max_demo1.dto.Car;
+import com.example.max_demo1.services.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,30 +11,30 @@ import java.util.List;
 @RestController
 @RequestMapping("/car")
 public class MyController {
-    List<Car> cars = new ArrayList<>();
 
-    Car car1 = new Car();
+    @Autowired
+    CarService carService;
 
-    @PostMapping
+
+    @PostMapping("/addCar")
     public String addCar(@RequestBody Car car){
-        cars.add(car);
+        carService.cars.add(car);
         return "added";
     }
 
-
-    @DeleteMapping
+    @DeleteMapping("/deleteCar")
     public String deleteCar(){
-        car1 = null;
+        carService.currentCar = null;
         return "deleted";
     }
 
     @GetMapping
     public Car getCar(){
-        return car1;
+        return carService.currentCar;
     }
 
     @GetMapping("/allCars")
     public List<Car> getAllCars(){
-        return cars;
+        return carService.cars;
     }
 }

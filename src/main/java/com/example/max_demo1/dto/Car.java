@@ -38,9 +38,5 @@ public class Car {
     private int price;
     private String name;
 }
-//public class Car {
-//    private int price = 2000000;
-//    private String name = "bmw";
-//}
 
 

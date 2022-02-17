@@ -3,6 +3,7 @@ package com.example.max_demo1.services;
 
 import com.example.max_demo1.carRepo.CarRepository;
 import com.example.max_demo1.db.ent.CarEnt;
+import com.example.max_demo1.db.ent.DriverEnt;
 import com.example.max_demo1.db.repo.CarRepo;
 import com.example.max_demo1.db.repo.DriverRepo;
 import com.example.max_demo1.dto.Car;
@@ -10,7 +11,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.List;
+
+
+
 
 @Service
 public class CarService {
@@ -22,23 +28,30 @@ public class CarService {
 
 
     @SneakyThrows
+    @PostConstruct
     public void init() {
-        CarEnt carEnt = new CarEnt();
-        carRepo.save(carEnt);
+//        CarEnt carEnt = new CarEnt();
+//        carRepo.save(carEnt);
+//
+//        List<CarEnt> all = carRepo.findAll();
+//        System.out.println("all " + all);
 
-        List<CarEnt> all = carRepo.findAll();
+        DriverEnt driverEnt = new DriverEnt();
+        driverEnt.setSurname("max");
+
+        CarEnt carEnt1 = new CarEnt();
+        carEnt1.setName("lada");
+
+        driverEnt.setCarEntList(Arrays.asList(carEnt1));
+
+        driverRepo.save(driverEnt);
+
+        List<DriverEnt> all = driverRepo.findAll();
         System.out.println("all " + all);
 
-//        DriverEnt driverEnt = new DriverEnt();
-//        driverEnt.setSurname("max");
-//
-//        CarEnt carEnt1 = new CarEnt();
-//        carEnt1.setName("lada");
-//
-//        driverEnt.setCarEntList(Arrays.asList(carEnt));
-//
-//        driverRepo.save(driverEnt);
 
+//        List<DriverEnt> oleg = driverRepo.findBySuperName("oleg");
+//        System.out.println(oleg.size());
 
     }
 

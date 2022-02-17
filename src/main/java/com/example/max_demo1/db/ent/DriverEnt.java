@@ -28,7 +28,7 @@ public class DriverEnt {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "name_id")
+    @JoinColumn(name = "name_num")
     private List<CarEnt> carEntList;
 
 }

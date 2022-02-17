@@ -2,27 +2,55 @@ package com.example.max_demo1.services;
 
 
 import com.example.max_demo1.carRepo.CarRepository;
-import com.example.max_demo1.carRepo.DriverRepository;
 import com.example.max_demo1.db.ent.CarEnt;
-import com.example.max_demo1.db.ent.DriverEnt;
 import com.example.max_demo1.db.repo.CarRepo;
 import com.example.max_demo1.db.repo.DriverRepo;
 import com.example.max_demo1.dto.Car;
-import com.example.max_demo1.dto.resp.CarResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.Arrays;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class CarService {
-    public CarRepository carRepository;
-    private ObjectMapper objectMapper;
+
+    final private CarRepository carRepository;
+    final private CarRepo carRepo;
+    final private DriverRepo driverRepo;
+    final private ObjectMapper objectMapper;
+
+
+    @SneakyThrows
+    public void init() {
+        CarEnt carEnt = new CarEnt();
+        carRepo.save(carEnt);
+
+        List<CarEnt> all = carRepo.findAll();
+        System.out.println("all " + all);
+
+//        DriverEnt driverEnt = new DriverEnt();
+//        driverEnt.setSurname("max");
+//
+//        CarEnt carEnt1 = new CarEnt();
+//        carEnt1.setName("lada");
+//
+//        driverEnt.setCarEntList(Arrays.asList(carEnt));
+//
+//        driverRepo.save(driverEnt);
+
+
+    }
+
+
+
+
+    public CarService(CarRepository carRepository, CarRepo carRepo, DriverRepo driverRepo, ObjectMapper objectMapper) {
+        this.carRepository = carRepository;
+        this.carRepo = carRepo;
+        this.driverRepo = driverRepo;
+        this.objectMapper = objectMapper;
+    }
 
     public void addCar(Car newCar) {carRepository.addCar(newCar);
     }

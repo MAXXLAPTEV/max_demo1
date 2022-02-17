@@ -2,7 +2,6 @@ package com.example.max_demo1.web;
 
 import com.example.max_demo1.dto.Car;
 import com.example.max_demo1.services.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +13,6 @@ public class CarController {
 
     final  CarService carService;
 
-    @Autowired
-
-
     public CarController(CarService carService) {
         this.carService = carService;
     }
@@ -27,7 +23,7 @@ public class CarController {
         return ResponseEntity.ok().body(carService.getCar(num));
     }
 
-    @PostMapping("/addCar/{num}")
+    @PostMapping("/addCar")
     public void addCar(@RequestBody Car newCar){
        carService.addCar(newCar);
     }

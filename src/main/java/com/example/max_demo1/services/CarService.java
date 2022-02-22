@@ -55,9 +55,6 @@ public class CarService {
 
     }
 
-
-
-
     public CarService(CarRepository carRepository, CarRepo carRepo, DriverRepo driverRepo, ObjectMapper objectMapper) {
         this.carRepository = carRepository;
         this.carRepo = carRepo;

@@ -1,37 +1,17 @@
 package com.example.max_demo1;
 
 import com.example.max_demo1.carRepo.CarRepository;
-import com.example.max_demo1.db.ent.CarEnt;
-import com.example.max_demo1.db.ent.DriverEnt;
-import com.example.max_demo1.dto.Car;
-import com.example.max_demo1.web.CarController;
+import com.example.max_demo1.db.web.CarController;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-
-import javax.annotation.PostConstruct;
-
-import java.lang.reflect.Array;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.ARRAY;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
 @SpringBootTest

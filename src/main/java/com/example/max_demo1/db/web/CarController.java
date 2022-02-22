@@ -1,4 +1,4 @@
-package com.example.max_demo1.web;
+package com.example.max_demo1.db.web;
 
 import com.example.max_demo1.dto.Car;
 import com.example.max_demo1.services.CarService;
